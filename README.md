@@ -1,7 +1,6 @@
 # Ember-content-for
 
-This addon is a proof of concept for named yields. Have you ever wanted to
-provide multiple yields to a component. This addon lets you do that.
+This addon is a proof of concept for named yields.
 
 ```hbs
 // templates/applications.hbs
