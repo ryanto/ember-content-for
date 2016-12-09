@@ -1,0 +1,21 @@
+{{#my-component as |my-component|}}
+
+  {{#content-for my-component "first"}}
+    This will show in the first section
+  {{/content-for}}
+
+  {{#if addSecondSection}}
+
+    {{#content-for my-component "second-section"}}
+      There is now a custom message for section two
+    {{/content-for}}
+
+  {{/if}}
+
+
+{{/my-component}}
+
+<br><br>
+
+<a href="#" {{action (action (mut addSecondSection) true)}}>Add custom section #2</a> |
+<a href="#" {{action (action (mut addSecondSection) false)}}>Remove custom section #2</a>

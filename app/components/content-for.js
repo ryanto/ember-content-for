@@ -1,0 +1,1 @@
+export { default } from 'ember-content-for/components/content-for';

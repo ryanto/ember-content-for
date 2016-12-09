@@ -1,27 +1,50 @@
 # Ember-content-for
 
-This README outlines the details of collaborating on this Ember addon.
+This addon is a proof of concept for named yields. Have you ever wanted to
+provide multiple yields to a component. This addon lets you do that.
 
-## Installation
+```hbs
+// templates/applications.hbs
 
-* `git clone <repository-url>` this repository
-* `cd ember-content-for`
-* `npm install`
-* `bower install`
+{{#user-signup-form as |user-signup-form|}}
 
-## Running
+  {{#content-form user-signup-form "success"}}
+    Success! we've created your account!
+  {{/content-for}}
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+  {{#content-form user-signup-form "error"}}
+    Opps! there was an error.
+  {{/content-for}}
 
-## Running Tests
+{{/user-signup-form}}
+```
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+```hbs
+// templates/components/user-signup-form.hbs
 
-## Building
+{{yield (allow-content-for this)}}
 
-* `ember build`
+<form>
 
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+  {{#if didError}}
+    {{#if (has-content-for this "error")}}
+      {{yield (content-for this "error")}}
+    {{else}}
+      Default error message would go here
+    {{/if}}
+  {{/if}}
+
+  // ... the user signup form is here ...
+
+  {{#if (has-content-for this "success")}}
+    {{yield (content-for this "success")}}
+  {{else}}
+    Default success message would be here.
+  {{/if}}
+
+</form>
+```
+
+## Install
+
+`ember install ember-content-for`
