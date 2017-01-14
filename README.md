@@ -11,7 +11,7 @@ This addon is a proof of concept for named yields.
     Success! we've created your account!
   {{/content-for}}
 
-  {{#content-form user-signup-form "error"}}
+  {{#content-for user-signup-form "error"}}
     Opps! there was an error.
   {{/content-for}}
 
