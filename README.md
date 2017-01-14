@@ -7,7 +7,7 @@ This addon is a proof of concept for named yields.
 
 {{#user-signup-form as |user-signup-form|}}
 
-  {{#content-form user-signup-form "success"}}
+  {{#content-for user-signup-form "success"}}
     Success! we've created your account!
   {{/content-for}}
 
